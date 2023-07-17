@@ -18,7 +18,7 @@ class BirdieController extends Controller
     public function index():Response
     {
         return Inertia::render('Birdie/Discovery', [
-            'birdies' => Birdie::with('user:id,username')-> latest()->get(),
+            'birdies' => Birdie::with('user:id,username')->latest()->get(),
         ]);
     }
 

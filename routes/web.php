@@ -9,6 +9,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,8 +32,13 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function ():Response {
     return Inertia::render('Dashboard', [
-        $currentUser = Auth::user(),
-        'birdies' => Birdie::whereIn('user_id', [$currentUser])->latest()->get(),
+        $currentUser = Auth::id(),
+
+        'birdies' => Birdie::with('user:id,username')
+            ->where('user_id',$currentUser)
+            ->latest()
+            ->take(10)
+            ->get(),
     ]);
 })->middleware(['auth', 'verified'])->name('dashboard');
 

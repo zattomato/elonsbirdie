@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('message');
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            //$table->foreignId('username')->constrained()->cascadeOnDelete();
             $table->integer('like_count')->default(0);
             //$table->string('picture')->nullable();
             $table->timestamps();
