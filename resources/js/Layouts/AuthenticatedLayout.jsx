@@ -4,6 +4,7 @@ import Dropdown from '@/Components/Dropdown';
 import NavLink from '@/Components/NavLink';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink';
 import { Link } from '@inertiajs/react';
+import axios from "axios";
 
 export default function Authenticated({ user, header, children }) {
     const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);
@@ -66,8 +67,12 @@ export default function Authenticated({ user, header, children }) {
 
                                     <Dropdown.Content>
                                         <Dropdown.Link
-                                            href={route('logout')}
-                                            method="post"
+                                            onClick={()=>{
+                                                confirm("Confirm Logout?")
+                                                if (true) {
+                                                    axios.post('logout')
+                                                }
+                                            }}
                                             as="button"
                                             className="text-red-600"
                                         >

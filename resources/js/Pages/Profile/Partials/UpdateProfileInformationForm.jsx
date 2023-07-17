@@ -26,7 +26,7 @@ export default function UpdateProfileInformation({ mustVerifyEmail, status, clas
     return (
         <section className={className}>
             <header>
-                <h2 className="text-lg font-medium text-gray-900">Profile Information</h2>
+                <h2 className="text-lg font-medium text-gray-900">Update Profile Information</h2>
 
                 <p className="mt-1 text-sm text-gray-600">
                     Update your account's profile information and email address.
@@ -50,6 +50,7 @@ export default function UpdateProfileInformation({ mustVerifyEmail, status, clas
                                 <span className="sr-only">Choose profile photo</span>
                                 <input
                                     type="file"
+                                    disabled={true}
                                     className="block w-full text-sm text-slate-500
                                       file:mr-4 file:py-2 file:px-4
                                       file:rounded-full file:border-0
