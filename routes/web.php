@@ -34,10 +34,16 @@ Route::get('/dashboard', function () {
     ]);
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::get('requirements', function () {
+    return Inertia::render('Requirements');
+})->middleware(['auth', 'verified'])->name('requirements');
+
 
 Route::resource('birdie',BirdieController::class)
     ->only(['index','store','update','destroy'])
     ->middleware(['auth','verified']);
+
+
 
 
 Route::middleware('auth')->group(function () {

@@ -36,6 +36,11 @@ export default function Authenticated({ user, header, children }) {
                                     Profile
                                 </NavLink>
                             </div>
+                            <div className="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                                <NavLink href={route('requirements')} active={route().current('requirements')}>
+                                    Requirements
+                                </NavLink>
+                            </div>
                         </div>
 
                         <div className="hidden sm:flex sm:items-center sm:ml-6">
@@ -119,6 +124,9 @@ export default function Authenticated({ user, header, children }) {
                         </ResponsiveNavLink>
                         <ResponsiveNavLink href={route('profile.edit')} active={route().current('profile.edit')}>
                             Profile
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink href={route('requirements')} active={route().current('requirements')}>
+                            Requirements
                         </ResponsiveNavLink>
                     </div>
 
