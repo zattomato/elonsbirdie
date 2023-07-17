@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\BirdieController;
 use App\Models\Birdie;
+use Inertia\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -28,9 +29,10 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/dashboard', function () {
+Route::get('/dashboard', function ():Response {
     return Inertia::render('Dashboard', [
-        'birdies' => Birdie::with('user:id,username')->latest()->get(),
+        $currentUser = Auth::user(),
+        'birdies' => Birdie::whereIn('user_id', [$currentUser])->latest()->get(),
     ]);
 })->middleware(['auth', 'verified'])->name('dashboard');
 
